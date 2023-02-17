@@ -1,0 +1,88 @@
+{
+    "name": "arcdigital/laravel-posthog",
+    "description": "PostHog Integration for Laravel",
+    "type": "library",
+    "keywords": [
+        "posthog",
+        "sdk",
+        "php",
+        "laravel"
+    ],
+    "homepage": "https://github.com/arcdigital/laravel-posthog",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Anand Capur",
+            "email": "github@anand.io",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/arcdigital/laravel-posthog/issues",
+        "forum": "https://github.com/arcdigital/laravel-posthog/discussions",
+        "source": "https://github.com/arcdigital/laravel-posthog",
+        "docs": "https://arcdigital.github.io/laravel-posthog"
+    },
+    "funding": [
+        {
+            "url": "https://github.com/sponsors/arcdigital",
+            "type": "github"
+        }
+    ],
+    "require": {
+        "php": "^8.1|^8.2",
+        "illuminate/config": "^9.0|^10.0",
+        "illuminate/contracts": "^9.0|^10.0",
+        "illuminate/support": "^9.0|^10.0",
+        "posthog/posthog-php": "^3.0",
+        "spatie/laravel-package-tools": "^1.14.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.2",
+        "nunomaduro/collision": "^6.0",
+        "nunomaduro/larastan": "^2.0",
+        "orchestra/testbench": "^8.0",
+        "pestphp/pest": "^1.20",
+        "pestphp/pest-plugin-laravel": "^1.1",
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan-deprecation-rules": "^1.0",
+        "phpstan/phpstan-phpunit": "^1.0",
+        "spatie/laravel-ray": "^1.28"
+    },
+    "autoload": {
+        "psr-4": {
+            "Arcdigital\\PostHog\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Arcdigital\\PostHog\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Arcdigital\\PostHog\\PostHogServiceProvider"
+            ],
+            "aliases": {
+                "PostHog": "Arcdigital\\PostHog\\Facades\\PostHog"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
