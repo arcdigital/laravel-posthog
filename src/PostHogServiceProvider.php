@@ -17,8 +17,8 @@ class PostHogServiceProvider extends PackageServiceProvider
 
     public function packageBooted(): void
     {
-        if ($key = config('posthog.key')) {
-            PostHog::init($key, ['host' => config('posthog.host', 'https://app.posthog.com')]);
+        if (! empty(config('posthog.key'))) {
+            PostHog::init(config('posthog.key'), ['host' => empty(config('posthog.host')) ? 'https://app.posthog.com' : config('posthog.host')]);
         }
     }
 }
